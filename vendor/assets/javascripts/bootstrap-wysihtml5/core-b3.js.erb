@@ -5,7 +5,7 @@
         "font-styles": function(locale, options) {
             var size = (options && options.size) ? ' btn-'+options.size : '';
             return "<li class='dropdown'>" +
-              "<a class='btn btn-default btn" + size + " dropdown-toggle' data-toggle='dropdown' href='#'>" +
+              "<a class='btn btn-default" + size + " dropdown-toggle' data-toggle='dropdown' href='#'>" +
               "<i class='fa fa-font'></i>&nbsp;<span class='current-font'>" + locale.font_styles.normal + "</span>&nbsp;<b class='caret'></b>" +
               "</a>" +
               "<ul class='dropdown-menu'>" +
@@ -24,9 +24,9 @@
             var size = (options && options.size) ? ' btn-'+options.size : '';
             return "<li>" +
               "<div class='btn-group'>" +
-                "<a class='btn btn-default btn" + size + "' data-wysihtml5-command='bold' title='CTRL+B' tabindex='-1'>" + locale.emphasis.bold + "</a>" +
-                "<a class='btn btn-default btn" + size + "' data-wysihtml5-command='italic' title='CTRL+I' tabindex='-1'>" + locale.emphasis.italic + "</a>" +
-                "<a class='btn btn-default btn" + size + "' data-wysihtml5-command='underline' title='CTRL+U' tabindex='-1'>" + locale.emphasis.underline + "</a>" +
+                "<a class='btn btn-default" + size + "' data-wysihtml5-command='bold' title='CTRL+B' tabindex='-1'>" + locale.emphasis.bold + "</a>" +
+                "<a class='btn btn-default" + size + "' data-wysihtml5-command='italic' title='CTRL+I' tabindex='-1'>" + locale.emphasis.italic + "</a>" +
+                "<a class='btn btn-default" + size + "' data-wysihtml5-command='underline' title='CTRL+U' tabindex='-1'>" + locale.emphasis.underline + "</a>" +
               "</div>" +
             "</li>";
         },
@@ -35,10 +35,10 @@
             var size = (options && options.size) ? ' btn-'+options.size : '';
             return "<li>" +
               "<div class='btn-group'>" +
-                "<a class='btn btn-default btn" + size + "' data-wysihtml5-command='insertUnorderedList' title='" + locale.lists.unordered + "' tabindex='-1'><i class='fa fa-list'></i></a>" +
-                "<a class='btn btn-default btn" + size + "' data-wysihtml5-command='insertOrderedList' title='" + locale.lists.ordered + "' tabindex='-1'><i class='fa fa-th-list'></i></a>" +
-                "<a class='btn btn-default btn" + size + "' data-wysihtml5-command='Outdent' title='" + locale.lists.outdent + "' tabindex='-1'><i class='fa fa-indent'></i></a>" +
-                "<a class='btn btn-default btn" + size + "' data-wysihtml5-command='Indent' title='" + locale.lists.indent + "' tabindex='-1'><i class='fa fa-outdent'></i></a>" +
+                "<a class='btn btn-default" + size + "' data-wysihtml5-command='insertUnorderedList' title='" + locale.lists.unordered + "' tabindex='-1'><i class='fa fa-list'></i></a>" +
+                "<a class='btn btn-default" + size + "' data-wysihtml5-command='insertOrderedList' title='" + locale.lists.ordered + "' tabindex='-1'><i class='fa fa-th-list'></i></a>" +
+                "<a class='btn btn-default" + size + "' data-wysihtml5-command='Outdent' title='" + locale.lists.outdent + "' tabindex='-1'><i class='fa fa-indent'></i></a>" +
+                "<a class='btn btn-default" + size + "' data-wysihtml5-command='Indent' title='" + locale.lists.indent + "' tabindex='-1'><i class='fa fa-outdent'></i></a>" +
               "</div>" +
             "</li>";
         },
@@ -88,7 +88,7 @@
                   "</div>" +
                 "</div>" +
               "</div>" +
-              "<a class='btn btn-default btn" + size + "' data-wysihtml5-command='insertImage' title='" + locale.image.insert + "' tabindex='-1'><i class='fa fa-picture-o'></i></a>" +
+              "<a class='btn sdfsfd btn-default" + size + "' data-wysihtml5-command='insertImage' title='" + locale.image.insert + "' tabindex='-1'><i class='fa fa-picture-o'></i></a>" +
             "</li>";
         },
 
@@ -96,7 +96,7 @@
             var size = (options && options.size) ? ' btn-'+options.size : '';
             return "<li>" +
               "<div class='btn-group'>" +
-                "<a class='btn btn-default btn" + size + "' data-wysihtml5-action='change_view' title='" + locale.html.edit + "' tabindex='-1'><i class='fa fa-pencil'></i></a>" +
+                "<a class='btn btn-default" + size + "' data-wysihtml5-action='change_view' title='" + locale.html.edit + "' tabindex='-1'><i class='fa fa-pencil'></i></a>" +
               "</div>" +
             "</li>";
         },
@@ -125,56 +125,56 @@
         "video": function(locale) {
            return "<li>" +
               "<div class='bootstrap-wysihtml5-insert-video-modal modal fade'>" +
-              "<div class='modal-dialog'>" +
+                "<div class='modal-dialog'>" +
                   "<div class='modal-content'>" +
                     "<div class='modal-header'>" +
-                    "<a class='close' data-dismiss='modal'>&times;</a>" +
-                    "<h3>" + locale.video.insert + "</h3>" +
+                      "<a class='close' data-dismiss='modal'>&times;</a>" +
+                      "<h3>" + locale.video.insert + "</h3>" +
                     "</div>" +
                     "<div class='modal-body'>" +
-                    "<div class='control-group'>" +
-                    "<input type='text' data-wysihtml5-dialog-field='src' value='http://' class='bootstrap-wysihtml5-insert-video-url input-xlarge'>" +
-                    "</div>" +
-                    "<div class='control-group error form-inline'>" +
-                                         "<label class='video-error hide'>" + locale.video.invalid + "</label>" +
-                    "</div>" +
+                      "<div class='control-group'>" +
+                        "<input type='text' data-wysihtml5-dialog-field='src' value='http://' class='bootstrap-wysihtml5-insert-video-url input-xlarge'>" +
+                      "</div>" +
+                      "<div class='control-group error form-inline'>" +
+                        "<label class='video-error hide'>" + locale.video.invalid + "</label>" +
+                      "</div>" +
                     "</div>" +
                     "<div class='modal-footer'>" +
-                    "<a href='#' class='btn btn-default' data-dismiss='modal' data-wysihtml5-dialog-action='cancel'>" + locale.video.cancel + "</a>" +
-                    "<a href='#' class='btn btn-primary' data-dismiss='modal' data-wysihtml5-dialog-action='save'>" + locale.video.insert + "</a>" +
+                      "<a href='#' class='btn btn-default' data-dismiss='modal' data-wysihtml5-dialog-action='cancel'>" + locale.video.cancel + "</a>" +
+                      "<a href='#' class='btn btn-primary' data-dismiss='modal' data-wysihtml5-dialog-action='save'>" + locale.video.insert + "</a>" +
                     "</div>" +
                   "</div>" +
                 "</div>" +
               "</div>" +
-              "<a class='btn' data-wysihtml5-command='insertVideo' title='" + locale.video.insert + "'><i class='fa fa-film'></i></a>" +
-              "</li>";
+              "<a class='btn btn-default' data-wysihtml5-command='insertVideo' title='" + locale.video.insert + "'><i class='fa fa-film'></i></a>" +
+            "</li>";
         },
         "sound-cloud": function(locale) {
            return "<li>" +
-              "<div class='bootstrap-wysihtml5-insert-sound-cloud-modal modal fade'>" +
-                "<div class='modal-dialog'>" +
-                    "<div class='modal-content'>" +
+            "<div class='bootstrap-wysihtml5-insert-sound-cloud-modal modal fade'>" +
+              "<div class='modal-dialog'>" +
+                  "<div class='modal-content'>" +
                     "<div class='modal-header'>" +
-                    "<a class='close' data-dismiss='modal'>&times;</a>" +
-                    "<h3>" + locale.sound_cloud.insert + "</h3>" +
+                      "<a class='close' data-dismiss='modal'>&times;</a>" +
+                      "<h3>" + locale.sound_cloud.insert + "</h3>" +
                     "</div>" +
-                    "<div class='modal-body'>" +
+                  "<div class='modal-body'>" +
                     "<div class='control-group'>" +
-                    "<input type='text' data-wysihtml5-dialog-field='src' value='http://' class='bootstrap-wysihtml5-insert-sound-cloud-url input-xlarge'>" +
+                      "<input type='text' data-wysihtml5-dialog-field='src' value='http://' class='bootstrap-wysihtml5-insert-sound-cloud-url input-xlarge'>" +
                     "</div>" +
                     "<div class='control-group error form-inline'>" +
-                    "<label class='sound-cloud-error hide'>" + locale.sound_cloud.invalid + "</label>" +
+                      "<label class='sound-cloud-error hide'>" + locale.sound_cloud.invalid + "</label>" +
                     "</div>" +
-                    "</div>" +
-                    "<div class='modal-footer'>" +
+                  "</div>" +
+                  "<div class='modal-footer'>" +
                     "<a href='#' class='btn' data-dismiss='modal' data-wysihtml5-dialog-action='cancel'>" + locale.sound_cloud.cancel + "</a>" +
                     "<a href='#' class='btn btn-primary' data-dismiss='modal' data-wysihtml5-dialog-action='save'>" + locale.sound_cloud.insert + "</a>" +
-                    "</div>" +
                   "</div>" +
                 "</div>" +
               "</div>" +
-              "<a class='btn' data-wysihtml5-command='insertSoundCloud' title='" + locale.sound_cloud.insert + "'><i class='fa fa-music'></i></a>" +
-              "</li>";
+            "</div>" +
+            "<a class='btn btn-default' data-wysihtml5-command='insertSoundCloud' title='" + locale.sound_cloud.insert + "'><i class='fa fa-music'></i></a>" +
+          "</li>";
         }
     };
 
@@ -352,8 +352,6 @@
             });
         },
 
-        ,
-
         initInsertVideo: function(toolbar) {
             var self = this;
             var insertVideoModal = toolbar.find('.bootstrap-wysihtml5-insert-video-modal');
@@ -416,6 +414,7 @@
                 return false;
             });
         },
+
         initInsertSoundCloud: function(toolbar) {
             var self = this;
             var insertSoundCloudModal = toolbar.find('.bootstrap-wysihtml5-insert-sound-cloud-modal');
@@ -705,7 +704,7 @@
                 orange: "Orange"
             },
             video: {
-                insert: "Insert YouTube/Vimeo Video",
+                insert: "Insert Video",
                 cancel: "Cancel",
                 invalid: "invalid video URL"
             },
