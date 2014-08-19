@@ -371,7 +371,7 @@
 
                     urlInput.val(linkUrl);
                     self.editor.currentView.element.focus();
-                    self.editor.composer.commands.exec("insertVideo", { src: embedUrl, width: '380', height: '230' });
+                    self.editor.composer.commands.exec("insertVideo", { src: embedUrl, class: "embed-responsive-item"});
                 }
                 else if ( linkUrl.match(/https?:\/\/(www.)?vimeo.com/) ) {
                     var linkParams = linkUrl.match(/\d+/)[0];
@@ -379,7 +379,7 @@
 
                     urlInput.val(linkUrl);
                     self.editor.currentView.element.focus();
-                    self.editor.composer.commands.exec("insertVideo", { src: embedUrl, width: '380', height: '230' });
+                    self.editor.composer.commands.exec("insertVideo", { src: embedUrl, class: "embed-responsive-item"});
                 }
                 else {
                     errorSpan.show();
@@ -433,7 +433,7 @@
 
                     urlInput.val(linkUrl);
                     self.editor.currentView.element.focus();
-                    self.editor.composer.commands.exec("insertSoundCloud", { src: embedUrl, width: '380', height: '170' });
+                    self.editor.composer.commands.exec("insertSoundCloud", { src: embedUrl});
                 }
                 else {
                     errorSpan.show();
@@ -752,26 +752,36 @@
                     composer.selection.setAfter(parent);
                     parent.parentNode.removeChild(parent);
                 }
-
                 // firefox and ie sometimes don't remove the video handles, even though the video was removed
                 wysihtml5.quirks.redraw(composer.element);
                 return;
             }
 
-            video = doc.createElement(NODE_NAME);
+
+            // Bootstrap repsonsive embed wrapper div
+            var wrapDiv = doc.createElement("div");
+            // wrapDiv.className = "embed-responsive embed-responsive-16by9 " + Math.floor((Math.random() * 100) + 1);
+            wrapDiv.className = "embed-responsive embed-responsive-16by9"
+
+            var innerIframe = doc.createElement(NODE_NAME);
+            innerIframe.className = "embed-responsive-item";
+
+            video = wrapDiv.appendChild(innerIframe);
 
             for (i in value) {
                 video[i] = value[i];
             }
             console.log(video);
-            composer.selection.insertNode(video);
+            console.log(wrapDiv);
+            console.log(composer.selection.insertNode);
+            composer.selection.insertNode(wrapDiv);
 
             if (wysihtml5.browser.hasProblemsSettingCaretAfterImg()) {
                 textNode = doc.createTextNode(wysihtml5.INVISIBLE_SPACE);
                 composer.selection.insertNode(textNode);
                 composer.selection.setAfter(textNode);
             } else {
-                composer.selection.setAfter(video);
+                composer.selection.setAfter(wrapDiv);
             }
         },
 
@@ -810,6 +820,7 @@
             });
 
             if (videosInSelection.length !== 1) {
+                console.log("videosInSelection", videosInSelection)
                 return false;
             }
 
@@ -833,8 +844,8 @@
       var code = value.src,
     attributes = {
         src: wysihtml5.commands.getAttributeValue.exec(code,"src"),
-        width: wysihtml5.commands.getAttributeValue.exec(code,"width"),
-        height: wysihtml5.commands.getAttributeValue.exec(code,"height")
+        // width: wysihtml5.commands.getAttributeValue.exec(code,"width"),
+        // height: wysihtml5.commands.getAttributeValue.exec(code,"height")
     },
     obj = (Object.create) ? Object.create(attributes) : new Object(attributes); //Object.create doesn't work in IE8
       wysihtml5.commands.insertVideo.exec(element, command, obj);
@@ -845,6 +856,7 @@
     },
 
     value: function(element) {
+      console.log("element", element)
       wysihtml5.commands.insertVideo.value(element);
     }
   };
@@ -890,13 +902,20 @@
                 return;
             }
 
-            sound_cloud = doc.createElement(NODE_NAME);
+            // Bootstrap repsonsive embed wrapper div
+            var wrapDiv = doc.createElement("div");
+            wrapDiv.className = "embed-responsive embed-responsive-16by9";
+
+            var innerIframe = doc.createElement(NODE_NAME);
+            innerIframe.className = "embed-responsive-item";
+
+            sound_cloud = wrapDiv.appendChild(innerIframe);
 
             for (i in value) {
                 sound_cloud[i] = value[i];
             }
             console.log(sound_cloud);
-            composer.selection.insertNode(sound_cloud);
+            composer.selection.insertNode(wrapDiv);
 
             if (wysihtml5.browser.hasProblemsSettingCaretAfterImg()) {
                 textNode = doc.createTextNode(wysihtml5.INVISIBLE_SPACE);
@@ -965,8 +984,8 @@
       var code = value.src,
     attributes = {
         src: wysihtml5.commands.getAttributeValue.exec(code,"src"),
-        width: wysihtml5.commands.getAttributeValue.exec(code,"width"),
-        height: wysihtml5.commands.getAttributeValue.exec(code,"height")
+        // width: wysihtml5.commands.getAttributeValue.exec(code,"width"),
+        // height: wysihtml5.commands.getAttributeValue.exec(code,"height")
     },
     obj = (Object.create) ? Object.create(attributes) : new Object(attributes); //Object.create doesn't work in IE8
       wysihtml5.commands.insertSoundCloud.exec(element, command, obj);
